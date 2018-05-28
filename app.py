@@ -2,7 +2,7 @@ import easyquotation
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
-@app.route('/quote', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_quote():
     stock_list = request.args['list'].split(',')
     stock_type = request.args.get('type', 'ctp')
