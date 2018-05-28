@@ -1,24 +1,25 @@
 # qihuohub-quotation
+***
+
+Provide real time quotation service for stock and Futures
 
 ***
-Provide real time quotation service for stock and Futures
-***
-## Requirement
+### Requirement
 * python3.5+
 
-## Package management
+### Package management
 
 	sudo apt-get install python3-pip
     
-## Install dependency
+### Install dependency
 
 	pip3 install -r requirements.txt
 
-## Install server container
+### Install server container
 
 	pip3 install uwsgi
 
-## Deploy
+### Deploy
 
 	uwsgi --http 0.0.0.0:5000 --wsgi-file app.py --callable app --processes 4 --threads 2 --stats 127.0.0.1:9191
 
