@@ -1,16 +1,19 @@
-### 按装pip3
+# Requirement
+* python3.5+
+
+# Package management
 
 	sudo apt-get install python3-pip
     
-### 安装依赖
+# Install dependency
 
 	pip3 install -r requirements.txt
 
-### 安装uwsgi
+# Install server container
 
 	pip3 install uwsgi
 
-### 启动app
+# Deploy
 
 	uwsgi --http 0.0.0.0:5000 --wsgi-file app.py --callable app --processes 4 --threads 2 --stats 127.0.0.1:9191
 
