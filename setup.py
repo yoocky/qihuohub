@@ -165,6 +165,54 @@ quotation.fundb() # 参数如上
 'status_cd': 'N'}>'}}
 ```
 
+#### 选择 ctp 传统期货行情
+
+```
+quotation = easyquotation.use('cpt')
+```
+
+##### 获取期货合约实时行情
+
+```
+quotation.real(['M1901', 'Y1809'])
+```
+
+*****return**
+
+```
+{
+"M1901": {
+"buy": 3102,
+"buy_volume": 33,
+"date": "2018-05-28",
+"high": 3105,
+"holding_volume": 1634204,
+"low": 3086,
+"name": "豆粕1901",
+"open": 3090,
+"sell": 3102,
+"sell_volume": 106,
+"settlement": 3097,
+"volume": 87346,
+"ystd_settlement": 3091
+},
+"Y1809": {
+"buy": 5764,
+"buy_volume": 73,
+"date": "2018-05-28",
+"high": 5770,
+"holding_volume": 973152,
+"low": 5746,
+"name": "豆油1809",
+"open": 5746,
+"sell": 5764,
+"sell_volume": 12,
+"settlement": 5758,
+"volume": 67724,
+"ystd_settlement": 5770
+}
+}
+```
 
 #### 更新股票代码
 
