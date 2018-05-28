@@ -95,7 +95,6 @@ class BaseQuotation:
     def get_stock_data(self, stock_list, **kwargs):
         """获取并格式化股票信息"""
         res = self._fetch_stock_data(stock_list)
-        print(res)
         return self.format_response_data(res, **kwargs)
 
     def _fetch_stock_data(self, stock_list):
