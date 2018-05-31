@@ -33,6 +33,8 @@ class Ctp(BaseQuotation):
                 sell_volume=int(stock[13]),
                 holding_volume=int(stock[14]),
                 volume=int(stock[15]),
-                date=stock[18],
+                exchange=str(stock[16]),
+                commodity_name=str(stock[17]),
+                date=str(stock[18]),
             )
         return stock_dict
