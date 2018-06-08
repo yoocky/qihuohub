@@ -20,7 +20,6 @@ class Ctp(BaseQuotation):
         stock_dict = dict()
         for stock_match_object in result:
             stock = stock_match_object.groups()
-            print(stock)
             stock_dict[stock[0]] = dict(
                 name=stock[1],
                 open=float(stock[3]),
