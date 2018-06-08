@@ -5,9 +5,8 @@ from .basequotation import BaseQuotation
 
 
 class Ctp(BaseQuotation):
-    """新浪传统期货免费行情获取"""
-    max_num = 800
-    grep_detail = re.compile(r'(\w{1,2}\d+)=([^\s][^,]+?)%s%s' % (r',([\.\d]+)' * 14, r',([^\s]+?)' * 13))
+    """新浪传统期货免费行情走势获取"""
+    max_num = 5
     stock_api = 'http://hq.sinajs.cn/?format=text&list='
 
     def _gen_stock_prefix(self, stock_codes):
@@ -20,16 +19,13 @@ class Ctp(BaseQuotation):
         stock_dict = dict()
         for stock_match_object in result:
             stock = stock_match_object.groups()
-            print(stock)
             stock_dict[stock[0]] = dict(
                 name=stock[1],
                 open=float(stock[3]),
                 high=float(stock[4]),
                 low=float(stock[5]),
-                buy=float(stock[7]),
-                sell=float(stock[8]),
-                current=float(stock[9]),
-                change= (float(stock[9])-float(stock[11]))/float(stock[11]),
+                buy=float(stock[8]),
+                sell=float(stock[9]),
                 settlement=float(stock[10]),
                 ystd_settlement=float(stock[11]),
                 buy_volume=int(stock[12]),
