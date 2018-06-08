@@ -4,7 +4,7 @@ import re
 from .basequotation import BaseQuotation
 
 
-class Ctp(BaseQuotation):
+class Chart(BaseQuotation):
     """新浪传统期货免费行情走势获取"""
     max_num = 5
     stock_api = 'http://hq.sinajs.cn/?format=text&list='
