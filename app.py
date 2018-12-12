@@ -53,6 +53,7 @@ def get_all_quotes_from_cache():
       return get_all_quotes()
 
 @app.route('/', methods=['GET'])
+@cache.cached(timeout=5, key_prefix=make_cache_key)
 def get_quote():
     stock_list = request.args['list'].split(',')
     stock_type = request.args.get('type', 'ctp')
