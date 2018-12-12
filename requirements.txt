@@ -2,3 +2,5 @@ six
 requests
 easyutils
 flask
+Flask-APScheduler
+Flask-Cache

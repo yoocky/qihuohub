@@ -1,6 +1,19 @@
 import easyquotation
 from flask import Flask, request, jsonify, Response
+from flask_cache import Cache
 app = Flask(__name__)
+cache = Cache()
+cache = Cache(config={
+    "CACHE_TYPE":"simple"
+})
+cache.init_app(app)
+
+def make_cache_key(*args, **kwargs):
+    """Dynamic creation the request url."""
+
+    path = request.path
+    args = str(hash(frozenset(request.args.items())))
+    return (path + args).encode('utf-8')
 
 @app.route('/', methods=['GET'])
 def get_quote():
@@ -14,6 +27,7 @@ def get_quote():
     return jsonify(data)
 
 @app.route('/codes', methods=['GET'])
+@cache.cached(timeout=100000, key_prefix=make_cache_key)
 def get_codes():
     stock_type = request.args.get('type', 'ctp')
     if stock_type in ['stock']:
@@ -26,4 +40,4 @@ def get_codes():
       return resp
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
