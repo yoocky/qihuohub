@@ -43,6 +43,7 @@ def update_futures_codes():
     grep_futures_codes = re.compile('fu_index_contract = ({.*})')
     response = requests.get(all_futures_codes_url)
     all_futures_codes = grep_futures_codes.findall(response.text)[0]
+    all_futures_codes = re.sub('\'','\"', all_futures_codes)
     with open(futures_code_path(), 'w') as f:
         f.write(json.dumps(dict(futures=all_futures_codes)))
 
@@ -54,6 +55,7 @@ def get_futures_codes(realtime=False):
         grep_futures_codes = re.compile('fu_index_contract = ({.*})')
         response = requests.get(all_futures_codes_url)
         futures_codes = grep_futures_codes.findall(response.text)[0]
+        futures_codes = re.sub('\'','\"', futures_codes)
         with open(futures_code_path(), 'w') as f:
             f.write(json.dumps(dict(futures=futures_codes)))
         return futures_codes
